@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
-import studentImage from './student.png';
+import studentImage from '../src/student.png';
 
 const App = () => {
   const [students, setStudents] = useState([]);
