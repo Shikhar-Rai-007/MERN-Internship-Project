@@ -52,6 +52,7 @@ const AdminLogin = () => {
 
   return (
     <div className="container login-container">
+      <img></img>
       <h2 className="mb-4">Admin Login</h2>
       <form onSubmit={handleLogin}>
         {/* Login form inputs */}
