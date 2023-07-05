@@ -3,7 +3,8 @@ import { Navigate, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './AdminLogin.css';
-
+import Image1 from "../assets/Image1.png";
+import Image2 from "../assets/Image2.jpg";
 const AdminLogin = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -51,8 +52,16 @@ const AdminLogin = () => {
   };
 
   return (
+    <>
+    <div className='left'>
+    <img
+      src={Image1}
+      alt="Image1"
+      />
+    </div>
+    
+      
     <div className="container login-container">
-      <img></img>
       <h2 className="mb-4">Admin Login</h2>
       <form onSubmit={handleLogin}>
         {/* Login form inputs */}
@@ -83,6 +92,14 @@ const AdminLogin = () => {
         <button type="submit" className="btn btn-primary">Register</button>
       </form>
     </div>
+    
+    <div className='right'>
+    <img
+      src={Image2}
+      alt="Image2"
+      />
+    </div>
+    </> 
   );
 };
 

@@ -5,3 +5,14 @@
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
+.left{
+    display: flex;
+}
+
+.right{
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: right;
+    height: 200px;
+}
