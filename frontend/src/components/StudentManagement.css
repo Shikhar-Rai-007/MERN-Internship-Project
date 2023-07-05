@@ -1,0 +1,15 @@
+.student-management-container {
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-width: 800px;
+  }
+  
+  .form-row {
+    margin-bottom: 10px;
+  }
+  
+  .btn {
+    margin-top: 10px;
+  }
