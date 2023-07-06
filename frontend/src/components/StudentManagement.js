@@ -48,9 +48,10 @@ const StudentManagement = () => {
   };
 
   return (
-    <div className="container student-management-container">
-      <h2 className="mb-4">Student Management</h2>
-      <form onSubmit={addStudent}>
+    <div className="student-management-background">
+      <div className="container student-management-container">
+        <h2 className="mb-4">Student Management</h2>
+        <form onSubmit={addStudent}>
         <div className="form-row">
           <div className="col">
             <input
@@ -61,7 +62,7 @@ const StudentManagement = () => {
               onChange={(e) => setName(e.target.value)}
               required
             />
-          </div>
+          </div><br></br>
           <div className="col">
             <input
               type="number"
@@ -71,7 +72,7 @@ const StudentManagement = () => {
               onChange={(e) => setAge(e.target.value)}
               required
             />
-          </div>
+          </div><br></br>
           <div className="col">
             <input
               type="text"
@@ -81,12 +82,16 @@ const StudentManagement = () => {
               onChange={(e) => setGrade(e.target.value)}
               required
             />
-          </div>
+          </div><br></br>
           <div className="col">
             <button type="submit" className="btn btn-primary">Add Student</button>
-          </div>
+          </div><br></br>
         </div>
-      </form>
+        // </form>
+        // <table className="table mt-4">
+        //   {/* Table content */}
+        // </table>
+                      </form>
       <table className="table mt-4">
         <thead className="thead-dark">
           <tr>
@@ -114,6 +119,7 @@ const StudentManagement = () => {
           ))}
         </tbody>
       </table>
+      </div>
     </div>
   );
 };
