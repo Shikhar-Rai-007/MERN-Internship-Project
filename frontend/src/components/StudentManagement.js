@@ -87,10 +87,38 @@ const StudentManagement = () => {
             <button type="submit" className="btn btn-primary">Add Student</button>
           </div><br></br>
         </div>
-        </form>
-        <table className="table mt-4">
-          {/* Table content */}
-        </table>
+        // </form>
+        // <table className="table mt-4">
+        //   {/* Table content */}
+        // </table>
+                      </form>
+      <table className="table mt-4">
+        <thead className="thead-dark">
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Grade</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {students.map((student) => (
+            <tr key={student._id}>
+              <td>{student.name}</td>
+              <td>{student.age}</td>
+              <td>{student.grade}</td>
+              <td>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => deleteStudent(student._id)}
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
       </div>
     </div>
   );
