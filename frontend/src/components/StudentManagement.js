@@ -52,75 +52,71 @@ const StudentManagement = () => {
       <div className="container student-management-container">
         <h2 className="mb-4">Student Management</h2>
         <form onSubmit={addStudent}>
-        <div className="form-row">
-          <div className="col">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-          </div><br></br>
-          <div className="col">
-            <input
-              type="number"
-              className="form-control"
-              placeholder="Age"
-              value={age}
-              onChange={(e) => setAge(e.target.value)}
-              required
-            />
-          </div><br></br>
-          <div className="col">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Grade"
-              value={grade}
-              onChange={(e) => setGrade(e.target.value)}
-              required
-            />
-          </div><br></br>
-          <div className="col">
-            <button type="submit" className="btn btn-primary">Add Student</button>
-          </div><br></br>
-        </div>
-        // </form>
-        // <table className="table mt-4">
-        //   {/* Table content */}
-        // </table>
-                      </form>
-      <table className="table mt-4">
-        <thead className="thead-dark">
-          <tr>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Grade</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {students.map((student) => (
-            <tr key={student._id}>
-              <td>{student.name}</td>
-              <td>{student.age}</td>
-              <td>{student.grade}</td>
-              <td>
-                <button
-                  className="btn btn-danger"
-                  onClick={() => deleteStudent(student._id)}
-                >
-                  Delete
-                </button>
-              </td>
+          <div className="form-row">
+            <div className="col">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </div><br></br>
+            <div className="col">
+              <input
+                type="number"
+                className="form-control"
+                placeholder="Age"
+                value={age}
+                onChange={(e) => setAge(e.target.value)}
+                required
+              />
+            </div><br></br>
+            <div className="col">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Grade"
+                value={grade}
+                onChange={(e) => setGrade(e.target.value)}
+                required
+              />
+            </div><br></br>
+            <div className="col">
+              <button type="submit" className="btn btn-primary">Add Student</button>
+            </div><br></br>
+          </div>
+        </form>
+        <table className="table mt-4">
+          <thead className="thead-dark">
+            <tr>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Grade</th>
+              <th>Action</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {students.map((student) => (
+              <tr key={student._id}>
+                <td>{student.name}</td>
+                <td>{student.age}</td>
+                <td>{student.grade}</td>
+                <td>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => deleteStudent(student._id)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
-    </div>
+    </div >
   );
 };
 
