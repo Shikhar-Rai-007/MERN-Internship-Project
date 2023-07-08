@@ -13,6 +13,18 @@ const studentSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  attendance:[
+    {
+      date:{
+        type:Date,
+        default:Date.now
+      },
+      status:{
+        type:String,
+        default:"Absent"
+      }
+    }
+  ]
 });
 
 module.exports = mongoose.model('Student', studentSchema);

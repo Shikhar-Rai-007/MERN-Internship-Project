@@ -15,7 +15,7 @@ const StudentManagement = () => {
 
   const fetchStudents = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/students');
+      const response = await axios.get('http://localhost:5000/admin/getStudents');
       setStudents(response.data);
     } catch (error) {
       console.error(error);
@@ -28,7 +28,7 @@ const StudentManagement = () => {
     const newStudent = { name, age, grade };
 
     try {
-      const response = await axios.post('http://localhost:5000/api/students', newStudent);
+      const response = await axios.post('http://localhost:5000/admin/addStudent', newStudent);
       setStudents([...students, response.data]);
       setName('');
       setAge('');
@@ -40,8 +40,28 @@ const StudentManagement = () => {
 
   const deleteStudent = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/students/${id}`);
+      await axios.delete(`http://localhost:5000/admin/deleteStudent/${id}`);
       setStudents(students.filter((student) => student._id !== id));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const postAttendance = async (id) => {
+    try {
+      // Implement your logic to post attendance for the student with the given ID
+      // You can show a modal or a form to input the attendance details
+
+      const attendanceDate = new Date().toISOString().slice(0, 10); // Get the current date
+      const attendanceStatus = 'Present'; // Set the attendance status (you can change this as needed)
+
+      // Send a POST request to the backend API to post attendance
+      await axios.post(`http://localhost:5000/admin/postAttendance/${id}`, {
+        date: attendanceDate,
+        status: attendanceStatus
+      });
+
+      alert(`Attendance posted for student with ID: ${id}`);
     } catch (error) {
       console.error(error);
     }
@@ -109,6 +129,11 @@ const StudentManagement = () => {
                     onClick={() => deleteStudent(student._id)}
                   >
                     Delete
+                  </button>
+                  <button
+                  className='btn btn-primary'
+                  onClick={()=>postAttendance(student._id)}>
+                    Post Attendance
                   </button>
                 </td>
               </tr>

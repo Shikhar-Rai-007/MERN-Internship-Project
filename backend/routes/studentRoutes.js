@@ -1,57 +1,41 @@
 const express = require('express');
 const router = express.Router();
 const Student = require('../models/Student');
+const User=require('../models/StudentSchema');
 
-// Get all students
-router.get('/', async (req, res) => {
+router.post('/registerStudent', async (req, res) => {
+  const { name, email, password } = req.body;
+
   try {
-    const students = await Student.find();
-    res.json(students);
+      const userExist = await User.findOne({ email: email });
+      if (userExist) return res.status(402).json({ error: "User already exists" });
+
+      const newUser = new User({ name, email, password });
+      await newUser.save();
+      res.status(201).json(newUser);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+      res.status(400).json({ message: err.message });
   }
 });
 
-// Create a new student
-router.post('/', async (req, res) => {
-  const { name, age, grade } = req.body;
-
+router.post('/loginStudent', async (req, res) => {
   try {
-    const newStudent = new Student({ name, age, grade });
-    await newStudent.save();
-    res.status(201).json(newStudent);
-  } catch (err) {
-    res.status(400).json({ message: err.message });
+      const { email, password } = req.body;
+
+      if (!email || !password) return res.status(400).json({ error: "Incomplete Credentials" });
+
+      const userLogin = await User.findOne({ email: email });
+
+      const isMatch = await bcrypt.compare(password, userLogin.password);
+
+      if (!isMatch) {
+          res.status(400).json({ error: "Invalid Credentials" });
+      }
+      else {
+          res.json({ message: "Login Successful" });
+      }
   }
-});
-
-// Update a student
-router.put('/:id', async (req, res) => {
-  const { name, age, grade } = req.body;
-  const { id } = req.params;
-
-  try {
-    const updatedStudent = await Student.findByIdAndUpdate(
-      id,
-      { name, age, grade },
-      { new: true }
-    );
-    res.json(updatedStudent);
-  } catch (err) {
-    res.status(400).json({ message: err.message });
-  }
-});
-
-// Delete a student
-router.delete('/:id', async (req, res) => {
-  const { id } = req.params;
-
-  try {
-    await Student.findByIdAndDelete(id);
-    res.json({ message: 'Student deleted' });
-  } catch (err) {
-    res.status(400).json({ message: err.message });
-  }
+  catch (err) { console.log(err); }
 });
 
 module.exports = router;

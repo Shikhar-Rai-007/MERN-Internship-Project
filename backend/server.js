@@ -10,8 +10,11 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
+const adminRoutes = require('./routes/adminRoutes');
 const studentRoutes = require('./routes/studentRoutes');
-app.use('/api/students', studentRoutes);
+
+app.use('/admin', adminRoutes);
+app.use('/student', studentRoutes);
 
 // Database connection
 mongoose.connect('mongodb://localhost:27017/School', {

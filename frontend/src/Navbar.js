@@ -10,12 +10,17 @@ function Navbar() {
         <li>
           <a href="/">Home</a>
         </li>
+
+        <li>
+          <a href="signup">SignUp</a>
+        </li>
+
+        <li>
+          <a href="login">Login</a>
+        </li>
+
         <li>
           <a href="students">Students</a>
-        </li>
-        
-        <li>
-          <a href="#login">Login</a>
         </li>
       </ul>
     </nav>
