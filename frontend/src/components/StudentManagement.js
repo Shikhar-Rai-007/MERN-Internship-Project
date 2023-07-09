@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './StudentManagement.css';
@@ -8,6 +9,7 @@ const StudentManagement = () => {
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
   const [grade, setGrade] = useState('');
+  const navigate=useNavigate();
 
   useEffect(() => {
     fetchStudents();
@@ -29,6 +31,7 @@ const StudentManagement = () => {
 
     try {
       const response = await axios.post('http://localhost:5000/admin/addStudent', newStudent);
+      alert(`Student Added Successfully`);
       setStudents([...students, response.data]);
       setName('');
       setAge('');
@@ -49,11 +52,8 @@ const StudentManagement = () => {
 
   const postAttendance = async (id) => {
     try {
-      // Implement your logic to post attendance for the student with the given ID
-      // You can show a modal or a form to input the attendance details
-
       const attendanceDate = new Date().toISOString().slice(0, 10); // Get the current date
-      const attendanceStatus = 'Present'; // Set the attendance status (you can change this as needed)
+      const attendanceStatus = 'Present'; 
 
       // Send a POST request to the backend API to post attendance
       await axios.post(`http://localhost:5000/admin/postAttendance/${id}`, {
@@ -61,10 +61,14 @@ const StudentManagement = () => {
         status: attendanceStatus
       });
 
-      alert(`Attendance posted for student with ID: ${id}`);
+      alert(`Attendance posted Successfully`);
     } catch (error) {
       console.error(error);
     }
+  };
+
+  const viewRecord = (studentId) => {
+    navigate(`/dashboard/${studentId}`);
   };
 
   return (
@@ -113,7 +117,6 @@ const StudentManagement = () => {
             <tr>
               <th>Name</th>
               <th>Age</th>
-              <th>Grade</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -122,7 +125,6 @@ const StudentManagement = () => {
               <tr key={student._id}>
                 <td>{student.name}</td>
                 <td>{student.age}</td>
-                <td>{student.grade}</td>
                 <td>
                   <button
                     className="btn btn-danger"
@@ -131,9 +133,15 @@ const StudentManagement = () => {
                     Delete
                   </button>
                   <button
-                  className='btn btn-primary'
-                  onClick={()=>postAttendance(student._id)}>
+                    className='btn btn-primary'
+                    onClick={() => postAttendance(student._id)}>
                     Post Attendance
+                  </button>
+                  <button
+                    className="btn btn-secondary"
+                    onClick={() => viewRecord(student._id)}
+                  >
+                    View Record
                   </button>
                 </td>
               </tr>
