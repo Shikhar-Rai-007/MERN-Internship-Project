@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
-import { Navigate, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './AdminLogin.css';
 import Image1 from "../assets/Image1.png";
 import Image2 from "../assets/Image2.jpg";
 const AdminLogin = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  //const history = useHistory();
-
+  
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
       // Send a POST request to the backend API for admin login
-      const response = await axios.post('http://localhost:5000/api/login', {
+      const response = await axios.post('http://localhost:5000/admin/login', {
         username,
         password,
       });
@@ -27,27 +26,10 @@ const AdminLogin = () => {
       localStorage.setItem('adminToken', token);
 
       // Redirect to the student management page
-      <Navigate to='/students'></Navigate>;
+      <Link to='/students'></Link>;
     } catch (error) {
       console.error(error);
       alert('Invalid username or password');
-    }
-  };
-
-  const handleRegister = async (e) => {
-    e.preventDefault();
-
-    try {
-      // Send a POST request to the backend API for admin registration
-      await axios.post('http://localhost:5000/api/register', {
-        username,
-        password,
-      });
-
-      alert('Admin registered successfully');
-    } catch (error) {
-      console.error(error);
-      alert('Failed to register admin');
     }
   };
 
@@ -66,15 +48,15 @@ const AdminLogin = () => {
       <form onSubmit={handleLogin}>
         {/* Login form inputs */}
       </form>
-      <form onSubmit={handleRegister}>
+      <form onSubmit={handleLogin}>
         <div className="form-group">
-          <label htmlFor="registerUsername">Username:</label>
+          <label htmlFor="registerUsername">E-Mail:</label>
           <input
-            type="text"
+            type="email"
             className="form-control"
-            id="registerUsername"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            id="registerEmail"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
