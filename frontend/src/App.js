@@ -14,7 +14,8 @@ const App = () => {
       <Router>
       <Navbar/>
         <Routes>
-          <Route path="/" element={<AdminLogin />}/>
+          <Route path='/' element={<SignUp />} />
+          <Route path="/login" element={<AdminLogin />}/>
           <Route path="/signup" element={<SignUp />} />
           <Route path="/students" element={<StudentManagement />}/>
           <Route path="/dashboard/:studentId" element={<StudentDashboard />}/>

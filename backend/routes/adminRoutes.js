@@ -6,13 +6,15 @@ const Student = require('../models/Student');
 
 //Create a new User
 router.post('/register', async (req, res) => {
-    const { name, email, password } = req.body;
+    //const { name, email, password } = req.body;
 
     try {
-        const userExist = await User.findOne({ email: email });
+        const userExist = await User.findOne({ email: req.body.email });
         if (userExist) return res.status(402).json({ error: "User already exists" });
 
-        const newUser = new User({ name, email, password });
+        const salt=await bcrypt.genSalt(10);
+        const secPass=await bcrypt.hash(req.body.password,salt);
+        const newUser = new User({ name:req.body.name, email:req.body.email, password:secPass });
         await newUser.save();
         res.status(201).json(newUser);
     } catch (err) {

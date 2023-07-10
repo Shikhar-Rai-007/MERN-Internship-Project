@@ -29,7 +29,7 @@ const Signup = () => {
     return (
         <div>
             <div style={{ marginTop: '10%' }}>
-                <h1 style={{ color: '#3498db' ,marginLeft:'480px'}}>Signup</h1>
+                <h1 style={{ color: '#3498db' ,marginLeft:'700px'}}>Signup</h1>
 
                 <InputControl
                     label="Name"
@@ -52,13 +52,13 @@ const Signup = () => {
                 
                 <div>
                     <b style={{ color: 'red', fontSize: '10px', marginRight: '3px', fontWeight: '500' }} >{errorMsg}</b>
-                    <button onClick={register} disabled={submitButtonDisabled} className="btn btn-primary" style={{ marginLeft: '480px' }}> 
+                    <button onClick={register} disabled={submitButtonDisabled} className="btn btn-primary" style={{ marginLeft: '700px' }}> 
                         Signup
                     </button>
-                    <p style={{ marginLeft: '400px' }}>
+                    <p style={{ marginLeft: '630px' }}>
                         Already have an account?{" "}
                         <span>
-                            <Link to="/">LogIn</Link>
+                            <Link to="/login">LogIn</Link>
                         </span>
                     </p>
                 </div>
