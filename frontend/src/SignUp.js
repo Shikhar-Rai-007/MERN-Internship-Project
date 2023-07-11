@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import InputControl from "../components/InputControl";
+import InputControl from "./InputControl";
 import axios from 'axios';
 import { Link } from "react-router-dom";
 

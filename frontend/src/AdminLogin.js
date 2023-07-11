@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './AdminLogin.css';
-import Image1 from "../assets/Image1.png";
-import Image2 from "../assets/Image2.jpg";
+import Image1 from "./assets/Image1.png";
+import Image2 from "./assets/Image2.jpg";
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

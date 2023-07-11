@@ -1,14 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate,Link } from 'react-router-dom';
-import SignUp from './components/SignUp.js';
-import AdminLogin from './components/AdminLogin.js';
-import StudentManagement from './components/StudentManagement.js';
-import StudentDashboard from './components/StudentDashBoard.js';
+import SignUp from './SignUp.js';
+import AdminLogin from './AdminLogin.js';
+import StudentManagement from './StudentManagement.js';
+import StudentDashboard from './StudentDashBoard.js';
 import Navbar from './Navbar.js';
 
 const App = () => {
-  const isAdminLoggedIn =1; //localStorage.getItem('isAdminLoggedIn');
-
   return (
     <div>
       <Router>
