@@ -71,7 +71,7 @@ const AdminLogin = () => {
             required
           />
         </div>
-        <button type="submit" className="btn btn-primary">Register</button>
+        <button type="submit" className="btn btn-primary">Login</button>
       </form>
     </div>
     

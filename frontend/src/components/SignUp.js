@@ -27,35 +27,41 @@ const Signup = () => {
     }
    
     return (
+        <>
         <div>
-            <div style={{ marginTop: '10%' }}>
-                <h1 style={{ color: '#3498db' ,marginLeft:'700px'}}>Signup</h1>
-
+            <div style={{ backgroundImage: `url('https://images.pexels.com/photos/415071/pexels-photo-415071.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        backgroundRepeat: 'no-repeat',
+                        height: 670,
+                        color: 'black',
+                        fontFamily: 'sans-serif',
+                        fontSize: '20',
+                        overflow: 'hidden', }}>
+                <h1 style={{marginTop: '10%', color: 'black', marginLeft: '700px', }}>Signup</h1>
+                <br />
                 <InputControl
                     label="Name"
                     placeholder="Enter your name"
                     value={name}
-                    onChange={(e) => setName(e.target.value)}
-                />
+                    onChange={(e) => setName(e.target.value)} /><br />
                 <InputControl
                     label="Email"
                     placeholder="Enter email address"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
+                    onChange={(e) => setEmail(e.target.value)} /><br />
                 <InputControl
                     label="Password"
                     placeholder="Enter password"
                     value={password}
-                    onChange={(e) => setPWD(e.target.value)}
-                />
-                
+                    onChange={(e) => setPWD(e.target.value)} />
+
                 <div>
-                    <b style={{ color: 'red', fontSize: '10px', marginRight: '3px', fontWeight: '500' }} >{errorMsg}</b>
-                    <button onClick={register} disabled={submitButtonDisabled} className="btn btn-primary" style={{ marginLeft: '700px' }}> 
+                    <b style={{ color: 'red', fontSize: '10px', marginRight: '30px', fontWeight: '500' }}>{errorMsg}</b>
+                    <button onClick={register} disabled={submitButtonDisabled} className="btn btn-primary" style={{ marginLeft: '700px' }}>
                         Signup
                     </button>
-                    <p style={{ marginLeft: '630px' }}>
+                    <p style={{ marginLeft: '670px', color: 'black' }}>
                         Already have an account?{" "}
                         <span>
                             <Link to="/login">LogIn</Link>
@@ -63,7 +69,7 @@ const Signup = () => {
                     </p>
                 </div>
             </div>
-        </div>
+        </div></>
     );
 }
 
