@@ -29,7 +29,7 @@ const AdminLogin = () => {
       <Link to='/students'></Link>;
     } catch (error) {
       console.error(error);
-      alert('Invalid username or password');
+      alert('Invalid email or password');
     }
   };
 
